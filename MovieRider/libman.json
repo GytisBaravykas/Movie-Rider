@@ -1,0 +1,55 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "jquery@3.3.1",
+      "files": [ "jquery.min.js", "jquery.min.map" ],
+      "destination": "wwwroot/lib/jquery/dist/"
+    },
+    {
+      "library": "bootbox.js@4.4.0",
+      "files": [ "bootbox.js", "bootbox.min.js" ],
+      "destination": "wwwroot/lib"
+    },
+    {
+      "library": "jquery-validate@1.17.0",
+      "files": [ "jquery.validate.min.js" ],
+      "destination": "wwwroot/lib/jquery-validation/dist/"
+    },
+    {
+      "library": "jquery-validation-unobtrusive@3.2.10",
+      "files": [ "jquery.validate.unobtrusive.min.js" ],
+      "destination": "wwwroot/lib/jquery-validation-unobtrusive/"
+    },
+    {
+      "library": "datatables@1.10.19",
+      "files": [
+        "js/jquery.dataTables.js",
+        "js/jquery.dataTables.min.js",
+        "js/dataTables.bootstrap.js",
+        "js/dataTables.bootstrap.min.js",
+        "css/dataTables.bootstrap.css",
+        "css/dataTables.bootstrap.min.css"
+      ],
+      "destination": "wwwroot/lib/jquery/datatables/"
+    },
+    {
+      "library": "typeahead.js@0.11.1",
+      "files": [
+        "typeahead.bundle.js",
+        "typeahead.bundle.min.js",
+        "typeahead.jquery.js",
+        "typeahead.jquery.min.js",
+        "bloodhound.js",
+        "bloodhound.min.js"
+      ],
+      "destination": "wwwroot/lib/typeahead"
+    },
+    {
+      "library": "toastr.js@2.1.4",
+      "files": [ "toastr.min.js", "toastr.css", "toastr.js.map" ],
+      "destination": "wwwroot/lib/toastr"
+    }
+  ]
+}

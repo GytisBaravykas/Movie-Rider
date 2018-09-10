@@ -1,0 +1,1 @@
+﻿DBCC CHECKIDENT('Customers', RESEED, 0)

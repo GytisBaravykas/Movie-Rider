@@ -1,0 +1,21 @@
+﻿<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a asp-area="" asp-controller="Customers" asp-action="Index" class="navbar-brand nav-menu-brand">Movie rider</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav nav-menu">
+                <li><a asp-area="" asp-controller="Rentals" asp-action="New">New rental</a></li>
+                <li><a asp-area="" asp-controller="Customers" asp-action="Index">Customers</a></li>
+                <li><a asp-area="" asp-controller="Movies" asp-action="Index">Movies</a></li>
+            </ul>
+            <partial name="_LoginPartial" />
+        </div>
+    </div>
+</nav>
