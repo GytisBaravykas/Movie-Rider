@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using MovieRider.Models;
 
@@ -21,16 +22,23 @@ namespace MovieRider.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
+        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly IServiceProvider _serviceProvider; //temp
+
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            IServiceProvider serviceProvider // temp
+            )
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+
+            _serviceProvider = serviceProvider; // temp
         }
 
         [BindProperty]
@@ -89,6 +97,9 @@ namespace MovieRider.Areas.Identity.Pages.Account
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
+                    //TEMP
+                    await AddRoleAsync(_serviceProvider, user);
+
                     _logger.LogInformation("User created a new account with password.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -113,5 +124,36 @@ namespace MovieRider.Areas.Identity.Pages.Account
             // If we got this far, something failed, redisplay form
             return Page();
         }
+        public async Task AddRoleAsync(IServiceProvider serviceProvider, ApplicationUser admin)
+        {
+            var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+            var UserManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+
+            string[] roleNames = { "CanManageMovies" };
+
+            IdentityResult roleResult;
+
+            foreach (var roleName in roleNames)
+
+            {
+
+                //creating the roles and seeding them to the database
+
+                var roleExist = await RoleManager.RoleExistsAsync(roleName);
+
+                if (!roleExist)
+
+                {
+
+                    roleResult = await RoleManager.CreateAsync(new IdentityRole(roleName));
+
+                }
+
+                await UserManager.AddToRoleAsync(admin, "CanManageMovies");
+            }
+
+        }
+
     }
 }
