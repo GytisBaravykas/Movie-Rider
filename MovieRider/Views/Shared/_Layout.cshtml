@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/lib/toastr/toastr.css" />
         <link rel="stylesheet" href="~/lib/toastr/toastr.js.map" />
+        <link rel="stylesheet" href="~/lib/jquery/datatables/css/responsive.bootstrap.min.css" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -23,6 +24,7 @@
               asp-fallback-href="~/lib/jquery/datatables/css/dataTables.bootstrap.min.css" />
         <link rel="stylesheet" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" asp-fallback-href="~/lib/toastr/toastr.css" />
         <link rel="stylesheet" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.js.map" asp-fallback-href="~/lib/toastr/toastr.js.map" />
+        <link rel="stylesheet" src="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css" asp-fallback-href="~/lib/jquery/datatables/css/responsive.bootstrap.min.css" />
     </environment>
 </head>
 <body>
@@ -47,6 +49,8 @@
         <script src="~/lib/jquery/datatables/js/dataTables.bootstrap.js" asp-append-version="true"></script>
         <script src="~/lib/jquery/datatables/js/jquery.dataTables.js" asp-append-version="true"></script>
         <script src="~/lib/typeahead/typeahead.bundle.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery/datatables/js/dataTables.responsive.min.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery/datatables/js/responsive.bootstrap.min.js" asp-append-version="true"></script>
     </environment>
     <environment exclude="Development">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
@@ -69,7 +73,8 @@
         <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js" asp-fallback-src="~/lib/jquery/datatables/js/dataTables.bootstrap.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" asp-fallback-src="~/lib/jquery/datatables/js/jquery.dataTables.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/corejs-typeahead/1.2.1/typeahead.bundle.min.js" asp-fallback-src="~/lib/typeahead/typeahead.bundle.min.js"></script>
-
+        <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js" asp-fallback-src="~/lib/jquery/datatables/js/dataTables.responsive.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js" asp-fallback-src="~/lib/jquery/datatables/js/responsive.bootstrap.min.js"></script>
     </environment>
 
     @RenderSection("Scripts", required: false)

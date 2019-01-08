@@ -22,7 +22,7 @@ namespace MovieRider.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
-        private readonly RoleManager<IdentityRole> _roleManager;
+        //private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IServiceProvider _serviceProvider; //temp
 
         public RegisterModel(
@@ -124,13 +124,14 @@ namespace MovieRider.Areas.Identity.Pages.Account
             // If we got this far, something failed, redisplay form
             return Page();
         }
-        public async Task AddRoleAsync(IServiceProvider serviceProvider, ApplicationUser admin)
+        public async Task AddRoleAsync(IServiceProvider serviceProvider, ApplicationUser user)
         {
             var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
             var UserManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
 
-            string[] roleNames = { "CanManageMovies" };
+            string[] roleNames = { "User" };
+            //string[] roleNames = { "CanManageMovies" };
 
             IdentityResult roleResult;
 
@@ -150,7 +151,7 @@ namespace MovieRider.Areas.Identity.Pages.Account
 
                 }
 
-                await UserManager.AddToRoleAsync(admin, "CanManageMovies");
+                await UserManager.AddToRoleAsync(user, roleName);
             }
 
         }

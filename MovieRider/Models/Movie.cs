@@ -32,6 +32,7 @@ namespace MovieRider.Models
         public byte NumberInStock { get; set; }
 
         [Display(Name ="Number available")]
+        [Range(1, 20)]
         public byte NumberAvailable { get; set; }
 
     }

@@ -84,13 +84,13 @@ namespace MovieRider
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            var policy = new AuthorizationPolicyBuilder()
+            /*var policy = new AuthorizationPolicyBuilder()
                 .RequireAuthenticatedUser()
-                .Build();
+                .Build();*/
 
             services.AddMvc(options =>
             {
-                options.Filters.Add(new AuthorizeFilter(policy));
+                //options.Filters.Add(new AuthorizeFilter(policy));
             })
                 .AddJsonOptions(options =>
             {

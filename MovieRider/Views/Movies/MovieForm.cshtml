@@ -17,7 +17,7 @@
             </div>
             <div class="form-group">
                 @Html.LabelFor(m => m.ReleaseDate)
-                @Html.TextBoxFor(m => m.ReleaseDate, "{0:d MMM yyyy}", new { @class = "form-control" })
+                @Html.TextBoxFor(m => m.ReleaseDate, "{0:yyyy MMM d}", new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.ReleaseDate)
             </div>
             <div class="form-group">
@@ -29,6 +29,11 @@
                 @Html.LabelFor(m => m.NumberInStock)
                 @Html.TextBoxFor(m => m.NumberInStock, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.NumberInStock)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.NumberAvailable)
+                @Html.TextBoxFor(m => m.NumberAvailable, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.NumberAvailable)
             </div>
         </div>
     </div>

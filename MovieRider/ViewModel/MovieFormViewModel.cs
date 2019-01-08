@@ -21,14 +21,19 @@ namespace MovieRider.ViewModel
         [Display(Name = "Genre")]
         public byte? GenreId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Date format should be year/month/day")]
         [Display(Name = "Release date")]
         public DateTime? ReleaseDate { get; set; }
-
-        [Required]
+        
         [Display(Name = "Number in stock")]
-        [Range(1, 20)]
+        [Range(1, 20,ErrorMessage = "Number must be greater than 0.")]
+        [Required(ErrorMessage = "Number must be greater than 0.")]
         public byte? NumberInStock { get; set; }
+
+        
+        [Display(Name = "Number available")]
+        [Range(1, 20)]
+        public byte NumberAvailable { get; set; }
 
         public string Title
         {
@@ -42,7 +47,7 @@ namespace MovieRider.ViewModel
         {
             Id = 0;
         }
-
+        
         public MovieFormViewModel(Movie movie)
         {
             Id = movie.Id;
@@ -50,6 +55,8 @@ namespace MovieRider.ViewModel
             ReleaseDate = movie.ReleaseDate;
             NumberInStock = movie.NumberInStock;
             GenreId = movie.GenreId;
+            NumberAvailable = movie.NumberAvailable;
+
         }
     }
 }

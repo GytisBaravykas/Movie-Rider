@@ -7,7 +7,7 @@
 
 
 <h2>Customers</h2>
-<table id="customers" class="table table-bordered table-hover">
+<table id="customers" class="table table-bordered table-hover" style="width:100%">
     <thead>
         <tr>
             <th>Customer</th>
@@ -21,6 +21,7 @@
     <script>
         $(document).ready(function () {
             var table = $("#customers").DataTable({
+                responsive: true,
                 ajax: {
                     url: "/api/customers",
                     dataSrc: ""
@@ -28,6 +29,9 @@
                 columns: [
                     {
                         data: "name",
+                        render: function (data, type, customer) {
+                            return "<a href='/customers/details/" + customer.id + "'>" + customer.name + "</a>";
+                        }
                     },
                     {
                         data: "membershipType.name"

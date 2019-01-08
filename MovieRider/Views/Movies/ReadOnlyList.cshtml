@@ -5,7 +5,7 @@
 }
 
 <h2>Movies</h2>
-<table id="movies" class="table table-bordered table-hover">
+<table id="movies" class="table table-bordered table-hover" style="width:100%">
     <thead>
         <tr>
             <th>Movie</th>
@@ -20,18 +20,23 @@
     <script>
         $(document).ready(function () {
             var table = $("#movies").DataTable({
+                responsive: true,
                 ajax: {
                     url: "/api/movies",
                     dataSrc: ""
                 },
                 columns: [
                     {
-                        data: "name"
+                        data: "name",
+                        render: function (data, type, movie) {
+                            return "<a href='/movies/details/" + movie.id + "'>" + movie.name + "</a>";
+                        }
                     },
                     {
                         data: "genre.name"
                     }
                 ]
+            });
         });
-        </script>
+    </script>
 }

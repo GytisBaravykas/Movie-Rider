@@ -31,15 +31,6 @@ namespace MovieRider.Controllers
 
             return View("ReadOnlyList");
 
-            /*
-            if (!pageIndex.HasValue)
-                pageIndex = 1;
-            if (String.IsNullOrWhiteSpace(sortBy))
-                sortBy = "Name";
-
-            return Content(String.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
-            */
-
         }
         public IActionResult Details(int id)
         {
@@ -82,17 +73,19 @@ namespace MovieRider.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Save(Movie movie)
+        [Authorize(Roles = RoleName.CanManageMovies)]
+        public ActionResult Save(Movie movie)
         {
             if (!ModelState.IsValid)
             {
                 var viewModel = new MovieFormViewModel(movie)
                 {
-
                     Genres = _context.Genres.ToList()
                 };
+
                 return View("MovieForm", viewModel);
             }
+
             if (movie.Id == 0)
             {
                 movie.DateAdded = DateTime.Now;
@@ -101,14 +94,10 @@ namespace MovieRider.Controllers
             else
             {
                 var movieInDb = _context.Movies.Single(m => m.Id == movie.Id);
-
                 movieInDb.Name = movie.Name;
-                movieInDb.ReleaseDate = movie.ReleaseDate;
                 movieInDb.GenreId = movie.GenreId;
                 movieInDb.NumberInStock = movie.NumberInStock;
-
-                //Mapper.Map(customer, customerInDb) Auto generates fields up above
-                //TryValidateModel(customerInDb,"", new string[] {"Name","Email"});
+                movieInDb.ReleaseDate = movie.ReleaseDate;
             }
 
             _context.SaveChanges();
